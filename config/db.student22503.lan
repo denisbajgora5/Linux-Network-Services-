@@ -1,0 +1,18 @@
+$TTL 3600                     ; Default time-to-live for all records (1 hour)
+
+$ORIGIN student22503.lan.     ; Sets the base domain for all records below
+
+@ IN SOA server.student22503.lan. admin.student22503.lan. (
+    2025110901 ; Serial number — increase this when you update the file
+    3600       ; Refresh — how often secondary servers check for updates
+    1800       ; Retry — if refresh fails, retry time
+    604800     ; Expire — how long secondaries keep data without updates
+    900        ; Negative Cache TTL — how long “not found” answers are cached
+)
+
+@       IN  NS     server.student22503.lan.   ; This domain’s authoritative DNS server
+@       IN  A      192.168.56.10              ; A record for the root of the domain
+server  IN  A      192.168.56.10              ; Server hostname → server IP
+client  IN  A      192.168.56.20              ; Client hostname → client IP
+www     IN  CNAME  server.student22503.lan.   ; www alias pointing to the server
+

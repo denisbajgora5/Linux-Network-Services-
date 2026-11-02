@@ -1,0 +1,28 @@
+options {
+    directory "/var/cache/bind";
+    // Where BIND stores its working files (cache, etc.)
+
+    allow-query { any; };
+    // Allow anyone on the network to ask this DNS server questions.
+    // Simple for a simple setup, but not safe for public internet.
+
+    recursion yes;
+    // Turn on recursion so this server can look up external websites
+    // (e.g., google.com) on behalf of clients.
+
+    forwarders {
+        8.8.8.8;   // Google DNS – fast and reliable
+        1.1.1.1;   // Cloudflare DNS – privacy-focused
+    };
+    // These DNS servers are used when your own server does not know an answer.
+
+    dnssec-validation no;
+    // Turn off DNSSEC checks. Makes simple setups easier.
+    // Not recommended for real production servers.
+
+    listen-on { any; };
+    // DNS server listens on all IPv4 interfaces.
+
+    listen-on-v6 { any; };
+    // DNS server listens on all IPv6 interfaces.
+};

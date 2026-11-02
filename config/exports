@@ -1,0 +1,13 @@
+# NFS Exports
+
+# Shared folder, read/write access for your whole network.
+# rw  → Clients can read and write
+# sync → Writes are committed to disk immediately (safer)
+# no_subtree_check → Avoids subtree verification, improves reliability
+/home/denis/shared   192.168.56.0/24(rw,sync,no_subtree_check)
+
+# /srv/denis/readonly settings:
+# ro  → Read-only (clients cannot modify files)
+# sync → Safer write behavior
+# no_subtree_check → Avoid subtree scanning issues
+/home/denis/readonly 192.168.56.0/24(ro,sync,no_subtree_check)

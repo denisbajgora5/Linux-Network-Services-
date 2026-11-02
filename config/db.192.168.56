@@ -1,0 +1,16 @@
+$TTL 3600                               ; Default TTL for all records (1 hour)
+
+$ORIGIN 56.168.192.in-addr.arpa.        ; Base domain for reverse DNS lookups
+
+@ IN SOA server.student22503.lan. admin.student22503.lan. (
+    2025110901 ; Serial number — increase when making changes
+    3600       ; Refresh — how often secondaries check for updates
+    1800       ; Retry — wait before retrying after a failed refresh
+    604800     ; Expire — how long secondaries keep data without updates
+    900        ; Negative Cache TTL — cache time for “not found” responses
+)
+
+@  IN  NS  server.student22503.lan.     ; This zone’s authoritative DNS server
+
+10 IN  PTR server.student22503.lan.     ; 192.168.56.10 → server
+20 IN  PTR client.student22503.lan.     ; 192.168.56.20 → client

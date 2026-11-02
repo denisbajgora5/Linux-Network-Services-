@@ -1,0 +1,22 @@
+//
+// Local zone configuration
+//
+
+// Forward zone for your custom domain
+zone "student22503.lan" {
+    type master;
+    // This DNS server is the primary (master) for this domain.
+
+    file "/var/cache/bind/db.student22503.lan";
+    // This is the zone file that holds all the DNS records for the domain.
+};
+
+// Reverse zone for your subnet
+zone "56.168.192.in-addr.arpa" {
+    type master;
+    // This server also controls the reverse lookup zone
+    // (turning IP addresses back into names).
+
+    file "/var/cache/bind/db.192.168.56";
+    // Zone file for PTR records for 192.168.56.x addresses.
+};
